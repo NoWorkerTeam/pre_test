@@ -44,8 +44,8 @@ def detect_wav_error(file_list, out_file):
                 # 파일 열기 실패(헤더 결함)
                 error_file_list.append(file)
 
-    with open(out_file, 'w') as f:
-        json.dump({"error_list": error_file_list}, f, indent=4)
+    with open(out_file, 'w', encoding='utf-8') as f:
+        json.dump({"error_list": error_file_list}, f, ensure_ascii=False, indent=4)
 
 def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
