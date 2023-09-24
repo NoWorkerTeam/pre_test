@@ -1,2 +1,5 @@
-pandas
-glob
+argparse
+wave
+numpy
+json
+os
