@@ -5,8 +5,8 @@ import json, os
 
 def arg_parse():
     parser = argparse.ArgumentParser(description='Korean SR Contest 2023')
-    parser.add_argument('audiolist', type=str, default='wavlist.txt')
-    parser.add_argument('outfile', type=str, default='../output/Q2.json')
+    parser.add_argument('audiolist', type=str, default='wavlist.txt', nargs='?')
+    parser.add_argument('outfile', type=str, default='../output/Q2.json', nargs='?')
 
     args = parser.parse_args()
 
