@@ -10,8 +10,8 @@ from pydub import AudioSegment, silence
 
 def arg_parse():
     parser = argparse.ArgumentParser(description='Korean SR Contest 2023')
-    parser.add_argument('--audiolist', type=str, default='pcmlist.txt', nargs='?')
-    parser.add_argument('--outfile', type=str, default='../output/Q3.json', nargs='?')
+    parser.add_argument('audiolist', type=str, default='pcmlist.txt', nargs='?')
+    parser.add_argument('outfile', type=str, default='../output/Q3.json', nargs='?')
 
     args = parser.parse_args()
 
@@ -49,9 +49,6 @@ def process(fp, fn, fe):
             wavfile.setparams((1, 2, 16000, 0, 'NONE', 'NONE'))
             wavfile.writeframes(pcmdata.tobytes())
 
-
-from pydub import AudioSegment, silence
-
 def detect_silence(file_list, out_file):
     silence_info = {}
     for file in file_list:
@@ -68,8 +65,8 @@ def detect_silence(file_list, out_file):
         silence_info[file] = silences
 
     # Write the dictionary to a JSON file
-    with open(out_file, 'w') as f:
-        json.dump(silence_info, f, indent=4)
+    with open(out_file, 'w', encoding='utf-8') as f:
+        json.dump(silence_info, f, ensure_ascii=False, indent=4)
 
 def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
