@@ -56,7 +56,7 @@ def detect_silence(file_list, out_file):
         audio = AudioSegment.from_wav(file)
 
         # Find the start and end times of silence longer than 4 seconds
-        silences = silence.detect_silence(audio, min_silence_len=4000, silence_thresh=-40)
+        silences = silence.detect_silence(audio, min_silence_len=4000, silence_thresh=-39.5)
 
         # Convert the times to seconds
         silences = [[round(t / 1000.0, 3) for t in s] for s in silences]
@@ -86,4 +86,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
