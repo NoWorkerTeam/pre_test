@@ -37,7 +37,7 @@ def detect_wav_error(file_list, out_file):
                     elif np.all(data == 0):
                         error_file_list.append(file)
                     # 클리핑 에러
-                    elif np.max(data) > 32767 or np.min(data) < -32768:
+                    elif np.max(data) >= 32767 or np.min(data) <= -32768:
                         error_file_list.append(file)
 
             except:
